@@ -1,0 +1,19 @@
+{
+  "Path": {
+    "Image_path": "/Users/yangn/Pictures/Dog_Images/Origin/Nothing",
+    "Output_path": "none"
+  },
+  "Parameters": {
+    "rotate90_probability": 0.5,
+    "rotate270_probability": 0.5, 
+    "flip_left_right_probability": 0.8,
+    "flip_top_bottom_probability": 0.2,	 
+    "crop_random_probability": 1.0,	 
+    "crop_random_percentage_area": 0.5,	 
+    "resize_probability": 1.0,	 
+    "resize_width": 256,	 
+    "resize_height": 256,	
+    "sample_number": 500	 
+  }
+}
+ 
