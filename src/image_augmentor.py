@@ -1,5 +1,4 @@
 import sys
-#import configparser
 import json
 import Augmentor
 
