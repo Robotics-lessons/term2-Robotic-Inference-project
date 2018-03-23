@@ -1,6 +1,4 @@
-## Udacity Term 2 Robotic Inference Project
-
-
+# Udacity Term 2 Robotic Inference Project
 
 ### Abstract
 
@@ -17,9 +15,9 @@ There are two parts in the project:
 1. P1 moving belt image classification part used P1 dataset pictures of candy boxes, bottles, and nothing (empty conveyor belt).
 2. Dog image classification part used the dog image dataset (dog A, dog B and nothing) which Author collected  from iPhone.
 
-### Background / Formulation
+### 1. P1 moving belt image classification
 
-#### 1. P1 moving belt image classification
+#### Background / Formulation
 
 ​         The P1 image dataset is stored in /data/P1/ directory. It include all images of bottles, candy wrappers and no object on a conveyor belt passing under a camera. A swing arm is used to sort all right objects to correct the bins depending on classifying results. 
 
@@ -32,12 +30,13 @@ P1 dataset was split two training and validation parts, the color image size is 
 
 <img src="images/P1-dataset-2.png" width="70%" height="60%" title="P1 dataseet">
 
-##### Data Acquisition:
+#### Data Acquisition:
+
 The P1 dataset is provided from Udacity Robotics lesson.
 
 It were split to two sets: training and validation dataset. They are color image and size is 256 x 256. This dataset is provided from Udacity robotics class.
 
-##### Model creation:
+#### Model creation:
 
 AlexNet Model was built as:
 
@@ -51,7 +50,26 @@ GoogLeNet Model was built as:
 
 Both epoch were set to 5. All other parameters used as default.
 
-#### 2. Dog image classification 
+#### Results
+
+Evaluating result for AlexNet Model  as:
+
+<img src="C:/projects/Deep_Learning/Udacity/Robotics/Term2/Robotic%20Inference%20project/images/Evaluate_P1_AlexNet.PNG" width="70%" height="60%" title="AlexNet P1 Model">
+
+Evaluating result for GoogLeNet Model  as:
+
+<img src="C:/projects/Deep_Learning/Udacity/Robotics/Term2/Robotic%20Inference%20project/images/P1-Evaluate-GoogleNet-2.PNG" width="70%" height="60%" title="GoogLeNet P1 Model">
+
+Both AlexNet and GoogLeNet models are at least 75 percent accuracy and an inference time of less than 10 ms.
+
+|                        |    AlexNet     |   GoogLeNet    |
+| :--------------------: | :------------: | :------------: |
+|        Accuacy         | 75.4090360656% | 75.4090360656% |
+| Average inference Time |  4.254004 ms   |   5.34768 ms   |
+
+### 2. Dog image classification
+
+#### Background / Formulation
 
 The dog image files located in Output folder, it includes three subfolders, Gany for dog A, Raise for dog B, Nothing for no object.
 
@@ -63,7 +81,7 @@ Dog image dataset was split three training, validation and test parts, the color
 
 <img src="images/dog_image_dbcreated-1.png" width="100%" height="70%" title="Dog datasetl">
 
-##### Data Acquisition:
+#### Data Acquisition:
 
 The dog images were taken from iPhone, then used Augmentation[3] code to generate 500 to 1000 additional images depend the object type.
 
@@ -80,9 +98,7 @@ The dog database was created as:
 | Image number | 2185 | 695 | 28 |
 | Percentage | 75% | 24% | 1% |
 
-
-
-##### Model creation:
+#### Model creation:
 
 GoogLeNet Model was created as : (Use default GoogLeNet network, no change in model itself)
 
@@ -92,27 +108,7 @@ GoogLeNet Model was created as : (Use default GoogLeNet network, no change in mo
 
 Both epoch were set to 50 and Batch size = 50. All other parameters used as default.
 
-
-### Results
-
-#### 1. P1 moving belt image classification
-
-Evaluating result for AlexNet Model  as:
-
-<img src="images/Evaluate_P1_AlexNet.PNG" width="70%" height="60%" title="AlexNet P1 Model">
-
-Evaluating result for GoogLeNet Model  as:
-
-<img src="images/P1-Evaluate-GoogleNet-2.PNG" width="70%" height="60%" title="GoogLeNet P1 Model">
-
-Both AlexNet and GoogLeNet models are at least 75 percent accuracy and an inference time of less than 10 ms.
-
-|         |    AlexNet     |   GoogLeNet    |
-| :-----: | :------------: | :------------: |
-| Accuacy | 75.4090360656% | 75.4090360656% |
-| Average inference Time | 4.254004 ms | 5.34768 ms |
-
-#### 2. Dog image classification 
+####  Results: 
 
 AlexNet and GoogLeNet models, both were built and tested. Compare both of them, the GoogLeNet model has better results. This article only shows GoogLeNet model result.
 
@@ -150,13 +146,23 @@ Changed batch size to 50, can reduce training time and use less memory.
 
 ### Conclusion 
 
-Using augmentation code to generate image is a good and fast way to get a large number of image.
+#### P1 moving belt image classification
 
-The result used GoogLeNet model (with epoch = 50, Batch size = 50 and test dataset = 1% of total images) and plus image augmented images are very satisfied in classification dog images (All three classes accuracy are 100%).  
+Both AlexNet and GoogLeNet models were used with P1 dataset provided by the lesson in moving belt image classification, the results achieved the requirement of Udacity lesson (least 75 percent accuracy and an inference time of less than 10 ms.) 
+
+#### Dog image classification
+
+Using augmentation is a good and fast way  to generate a large number of image from a small set of original images.
+
+Both AlexNet and GoogLeNet models were tested, the GoogLeNet model was better results at same epoch number = 20. 
+
+The same GoogLeNet model, different epoch number 5, 20, 30 and 50 were tested.
+
+The GoogLeNet model (with epoch = 50, Batch size = 50 and test dataset = 1% of total images) achieved the goal (All three classes accuracy are 100%).  
 
 ### Future Work
 
-1. Install Nvidia DIGITS system on local PC instead of using cloud resource, so there is no time limitation to implement and test different projects and models.
+1. Install Nvidia DIGITS system on local PC instead of using cloud GPU resource, the way is no time limitation to implement and test different projects and models.
 2.  Include testing object detection and segmentation implementation, and deploying the model on Jetson TX2 board and testing them in real world environment.
 
 ### References
