@@ -84,7 +84,7 @@ The dog database was created as:
 
 ##### Model creation:
 
-GoogLeNet Model was built as:
+GoogLeNet Model was created as : (Use default GoogLeNet network, no change in model itself)
 
 <img src="images/GoogLeNet_dog_epoch50_model.png" width="100%" height="70%" title="GoogLeNet Dog Model">
 
@@ -136,13 +136,28 @@ Digits test results screen copy:
 
 The original images are almost covering full dog body, using augment code can easily generate different angle and different part of dog body images. There is no problem to use rotate, flip and resize functions to generate new images, but crop image function can cause some image problems if the new image didn't include the target object at all. The image source quality is very important for Deep Learning training result, the manually checking was applying all these generated images to make sure no any nothing image mixed in dog image classes. 
 
-### Conclusion / Future Work
+To achieve the best result, the LeNet network was not used because only  28x28 image size and gray color can be used. But AlexNet and GoogLeNet, both networks support 256x256 color image.
+
+Both AlexNet and GoogLeNet have been tested for classification of dog image,  GoogLeNet showed better accuracy than AlexNet at epoch = 20.  According to the research paper from Siddharth Das[4], GoogLeNet had a better performance than AlexNet.
+
+CNNs Architectures:LeNet, AlexNet, VGG, GoogLeNet, ResNet comparing table:
+
+<img src="images/CNN-Architecture_compare.png" width="70%" height="60%" title="CNN architecture comparing">
+
+So GoogLeNet was selected to continue training and testing. Set epoch at 5, 20, 30 and 50 to train the GoogLeNet network, the best result is at epoch = 50, Batch size = 50.
+
+Changed batch size to 50, can reduce training time and use less memory.
+
+### Conclusion 
 
 Using augmentation code to generate image is a good and fast way to get a large number of image.
 
-The result used GoogLeNet model (with epoch = 50, Batch size = 50 and test dataset = 1% of total images) and plus image augmented images are very satisfied in classification image area.  
+The result used GoogLeNet model (with epoch = 50, Batch size = 50 and test dataset = 1% of total images) and plus image augmented images are very satisfied in classification dog images (All three classes accuracy are 100%).  
 
-Further work will include testing object detection and segmentation implementation, and deploying the model on Jetson TX2 board and testing them in real world environment.
+### Future Work
+
+1. Install Nvidia DIGITS system on local PC instead of using cloud resource, so there is no time limitation to implement and test different projects and models.
+2.  Include testing object detection and segmentation implementation, and deploying the model on Jetson TX2 board and testing them in real world environment.
 
 ### References
 
@@ -150,5 +165,6 @@ Further work will include testing object detection and segmentation implementati
 
 [2] Nvidia, DIGITS workflow "https://developer.nvidia.com/digits" 2018
 
-[3]  Marcus D. Bloice, Augmentor "https://github.com/mdbloice/Augmentor" 2018
+[3] Marcus D. Bloice, Augmentor "https://github.com/mdbloice/Augmentor" 2018
 
+[4] Siddharth Das, CNNs Architectures:LeNet, AlexNet, VGG, GoogLeNet, ResNet and more …  "https://medium.com/@siddharthdas_32104/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5" 2017
